@@ -5,6 +5,7 @@ import styles from './taskInput.module.scss'
 import { TodoTypes } from '../../PropTypes/todo.proptype'
 import connect, { ExtraInfoType } from '../../HOC/connect'
 import { debug, log } from '../../constants'
+import Title from '../Title'
 
 interface TaskInputProps {
   addTodo: (name: string) => void
@@ -16,6 +17,10 @@ interface TaskInputProps {
 function TaskInput(props: TaskInputProps & typeof injectedProps) {
   const { addTodo, currentTodo, editTodo, finishEditTodo, debug, log } = props
   const [name, setName] = useState<string>('')
+
+  const address = {
+    street: '440/20/Huỳnh Tấn Phát'
+  }
 
   log(debug)
 
@@ -41,7 +46,8 @@ function TaskInput(props: TaskInputProps & typeof injectedProps) {
 
   return (
     <div className='mb-2'>
-      <h1 className={styles.title}>To do list typescript</h1>
+      <Title address={address} />
+      {/* <h1 className={styles.title}>To do list typescript</h1> */}
       <form className={styles.form} onSubmit={handleSubmit}>
         <input
           type='text'
